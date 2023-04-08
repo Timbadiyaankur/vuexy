@@ -10,15 +10,7 @@ module.exports = {
   rules: {
     'vue/html-closing-bracket-newline': ['warn', { singleline: 'never', multiline: 'always' }],
     'vue/max-attributes-per-line': 'off',
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: { consistent: true, multiline: true },
-        ObjectPattern: { consistent: true, multiline: true },
-        ImportDeclaration: 'never',
-        ExportDeclaration: { multiline: true, minProperties: 3 },
-      },
-    ],
+    'object-curly-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
