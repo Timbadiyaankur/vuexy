@@ -17,10 +17,7 @@
       :style="cardStyles"
       v-on="$listeners"
     >
-      <div
-        v-if="showHeader"
-        class="card-header"
-      >
+      <div v-if="showHeader" class="card-header">
         <!-- Title & SubTitle -->
         <div>
           <b-card-title>{{ $attrs.title }}</b-card-title>
@@ -41,12 +38,7 @@
       </div>
 
       <!-- Collapsible Content -->
-      <b-collapse
-        :id="parentID"
-        v-model="content_visible"
-        :visible="content_visible"
-        class="card-content"
-      >
+      <b-collapse :id="parentID" v-model="content_visible" :visible="content_visible" class="card-content">
         <!-- Handle no-body -->
         <slot v-if="$attrs['no-body'] !== undefined" />
         <b-card-body v-else>
@@ -58,9 +50,7 @@
 </template>
 
 <script>
-import {
-  BCard, BCardTitle, BCardSubTitle, BCardBody, BCollapse, BOverlay,
-} from 'bootstrap-vue'
+import { BCard, BCardTitle, BCardSubTitle, BCardBody, BCollapse, BOverlay } from 'bootstrap-vue'
 import BCardActionsContainer from './BCardActionsContainer.vue'
 
 export default {
@@ -71,30 +61,30 @@ export default {
     BCardSubTitle,
     BCardBody,
     BCollapse,
-    BOverlay,
+    BOverlay
   },
   inheritAttrs: false,
   props: {
     collapsed: {
       type: Boolean,
-      default: false,
+      default: false
     },
     noActions: {
       type: Boolean,
-      default: false,
+      default: false
     },
     actionCollapse: {
       type: Boolean,
-      default: false,
+      default: false
     },
     actionRefresh: {
       type: Boolean,
-      default: false,
+      default: false
     },
     actionClose: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
@@ -102,7 +92,7 @@ export default {
       content_visible: !this.collapsed,
       showLoading: false,
       cardClosed: false,
-      cardStyles: {},
+      cardStyles: {}
     }
   },
   computed: {
@@ -127,7 +117,7 @@ export default {
       if (this.actionRefresh || allFalse) actions.push('refresh')
       if (this.actionClose || allFalse) actions.push('close')
       return actions
-    },
+    }
   },
   created() {
     this.parentID = String(Math.floor(Math.random() * 10) + 1)
@@ -152,8 +142,8 @@ export default {
     triggerClose() {
       this.removeCard()
       this.$emit('close')
-    },
-  },
+    }
+  }
 }
 </script>
 

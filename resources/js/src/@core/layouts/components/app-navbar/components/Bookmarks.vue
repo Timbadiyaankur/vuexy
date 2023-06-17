@@ -1,15 +1,7 @@
 <template>
   <b-navbar-nav class="nav">
-    <b-nav-item
-      v-for="(bookmark, index) in bookmarks"
-      :id="`bookmark-${index}`"
-      :key="index"
-      :to="bookmark.route"
-    >
-      <feather-icon
-        :icon="bookmark.icon"
-        size="21"
-      />
+    <b-nav-item v-for="(bookmark, index) in bookmarks" :id="`bookmark-${index}`" :key="index" :to="bookmark.route">
+      <feather-icon :icon="bookmark.icon" size="21" />
       <b-tooltip
         triggers="hover"
         :target="`bookmark-${index}`"
@@ -17,35 +9,20 @@
         :delay="{ show: 1000, hide: 50 }"
       />
     </b-nav-item>
-    <b-nav-item-dropdown
-      link-classes="bookmark-star"
-      lazy
-      @hidden="resetsearchQuery"
-    >
-      <feather-icon
-        slot="button-content"
-        icon="StarIcon"
-        size="21"
-        class="text-warning"
-      />
+    <b-nav-item-dropdown link-classes="bookmark-star" lazy @hidden="resetsearchQuery">
+      <feather-icon slot="button-content" icon="StarIcon" size="21" class="text-warning" />
 
       <!-- Dropdown Content -->
-      <li style="min-width:300px">
+      <li style="min-width: 300px">
         <div class="p-1">
-          <b-form-input
-            id="boomark-search-input"
-            v-model="searchQuery"
-            placeholder="Explore Vuexy..."
-            autofocus
-          />
+          <b-form-input id="boomark-search-input" v-model="searchQuery" placeholder="Explore Vuexy..." autofocus />
         </div>
         <vue-perfect-scrollbar
           :settings="perfectScrollbarSettings"
           class="search-list search-list-bookmark scroll-area"
-          :class="{'show': filteredData.pages && filteredData.pages.length }"
+          :class="{ show: filteredData.pages && filteredData.pages.length }"
           tagname="ul"
         >
-
           <b-dropdown-item
             v-for="(suggestion, index) in filteredData.pages || bookmarks"
             :key="index"
@@ -54,37 +31,27 @@
             :to="suggestion.route"
             @mouseenter="currentSelected = index"
           >
-            <feather-icon
-              :icon="suggestion.icon"
-              class="mr-75"
-              size="18"
-            />
+            <feather-icon :icon="suggestion.icon" class="mr-75" size="18" />
             <span class="align-middle">{{ suggestion.title }}</span>
             <feather-icon
               icon="StarIcon"
               class="ml-auto"
               size="16"
-              :class="{'text-warning': suggestion.isBookmarked}"
+              :class="{ 'text-warning': suggestion.isBookmarked }"
               @click.stop.prevent="toggleBookmarked(suggestion)"
             />
-
           </b-dropdown-item>
-          <b-dropdown-item
-            v-show="!(filteredData.pages && filteredData.pages.length) && searchQuery"
-            disabled
-          >
+          <b-dropdown-item v-show="!(filteredData.pages && filteredData.pages.length) && searchQuery" disabled>
             No Results Found.
-          </b-dropdown-item></vue-perfect-scrollbar>
+          </b-dropdown-item></vue-perfect-scrollbar
+        >
       </li>
     </b-nav-item-dropdown>
-
   </b-navbar-nav>
 </template>
 
 <script>
-import {
-  BNavbarNav, BNavItem, BTooltip, BNavItemDropdown, BFormInput, BDropdownItem,
-} from 'bootstrap-vue'
+import { BNavbarNav, BNavItem, BTooltip, BNavItemDropdown, BFormInput, BDropdownItem } from 'bootstrap-vue'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import useAutoSuggest from '@core/components/app-auto-suggest/useAutoSuggest'
 import { ref, watch } from '@vue/composition-api'
@@ -94,7 +61,13 @@ import searchAndBookmarkData from '../search-and-bookmark-data'
 
 export default {
   components: {
-    BNavbarNav, BNavItem, BTooltip, BNavItemDropdown, BFormInput, VuePerfectScrollbar, BDropdownItem,
+    BNavbarNav,
+    BNavItem,
+    BTooltip,
+    BNavItemDropdown,
+    BFormInput,
+    VuePerfectScrollbar,
+    BDropdownItem
   },
   setup() {
     const searchAndBookmarkDataPages = ref(searchAndBookmarkData.pages)
@@ -102,14 +75,13 @@ export default {
     const currentSelected = ref(-1)
 
     const perfectScrollbarSettings = {
-      maxScrollbarLength: 60,
+      maxScrollbarLength: 60
     }
 
-    const {
-      searchQuery,
-      resetsearchQuery,
-      filteredData,
-    } = useAutoSuggest({ data: { pages: searchAndBookmarkDataPages.value }, searchLimit: 6 })
+    const { searchQuery, resetsearchQuery, filteredData } = useAutoSuggest({
+      data: { pages: searchAndBookmarkDataPages.value },
+      searchLimit: 6
+    })
 
     watch(searchQuery, val => {
       store.commit('app/TOGGLE_OVERLAY', Boolean(val))
@@ -150,17 +122,16 @@ export default {
       // AutoSuggest
       searchQuery,
       resetsearchQuery,
-      filteredData,
+      filteredData
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~@resources/scss/base/bootstrap-extended/include';
 
-ul
-{
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -170,27 +141,27 @@ p {
 }
 
 .nav-bookmar-content-overlay {
-    position: fixed;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    -webkit-transition: all 0.7s;
-    transition: all 0.7s;
-    z-index: -1;
+  position: fixed;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  z-index: -1;
 
-    &:not(.show) {
-      pointer-events: none;
-    }
+  &:not(.show) {
+    pointer-events: none;
+  }
 
-    &.show {
-      cursor: pointer;
-      z-index: 10;
-      opacity: 1;
-    }
+  &.show {
+    cursor: pointer;
+    z-index: 10;
+    opacity: 1;
+  }
 }
 </style>

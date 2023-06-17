@@ -1,6 +1,5 @@
 <template>
   <layout-vertical>
-
     <router-view />
 
     <template #navbar="{ toggleVerticalMenuActive }">
@@ -24,12 +23,12 @@ export default {
   components: {
     // AppCustomizer,
     LayoutVertical,
-    Navbar,
+    Navbar
   },
   data() {
     return {
       // showCustomizer: $themeConfig.layout.customizer,
     }
-  },
+  }
 }
 </script>

@@ -1,15 +1,8 @@
 <template>
   <div class="toastification">
     <div class="d-flex align-items-start">
-      <b-avatar
-        :variant="variant"
-        size="1.8rem"
-        class="mr-75 flex-shrink-0"
-      >
-        <feather-icon
-          :icon="icon"
-          size="15"
-        />
+      <b-avatar :variant="variant" size="1.8rem" class="mr-75 flex-shrink-0">
+        <feather-icon :icon="icon" size="15" />
       </b-avatar>
       <div class="d-flex flex-grow-1">
         <div>
@@ -19,21 +12,10 @@
             :class="`text-${variant}`"
             v-text="title"
           />
-          <small
-            v-if="text"
-            class="d-inline-block text-body"
-            v-text="text"
-          />
+          <small v-if="text" class="d-inline-block text-body" v-text="text" />
         </div>
-        <span
-          class="cursor-pointer toastification-close-icon ml-auto "
-          @click="$emit('close-toast')"
-        >
-          <feather-icon
-            v-if="!hideClose"
-            icon="XIcon"
-            class="text-body"
-          />
+        <span class="cursor-pointer toastification-close-icon ml-auto" @click="$emit('close-toast')">
+          <feather-icon v-if="!hideClose" icon="XIcon" class="text-body" />
         </span>
       </div>
     </div>
@@ -45,30 +27,30 @@ import { BAvatar } from 'bootstrap-vue'
 
 export default {
   components: {
-    BAvatar,
+    BAvatar
   },
   props: {
     variant: {
       type: String,
-      default: 'primary',
+      default: 'primary'
     },
     icon: {
       type: String,
-      default: null,
+      default: null
     },
     title: {
       type: String,
-      default: null,
+      default: null
     },
     text: {
       type: String,
-      default: null,
+      default: null
     },
     hideClose: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 }
 </script>
 

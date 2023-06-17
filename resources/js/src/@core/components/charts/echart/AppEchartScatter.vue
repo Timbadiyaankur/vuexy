@@ -1,10 +1,5 @@
 <template>
-  <e-charts
-    ref="line"
-    :options="option"
-    theme="theme-color"
-    auto-resize
-  />
+  <e-charts ref="line" :options="option" theme="theme-color" auto-resize />
 </template>
 
 <script>
@@ -18,13 +13,13 @@ ECharts.registerTheme('theme-color', theme)
 
 export default {
   components: {
-    ECharts,
+    ECharts
   },
   props: {
     optionData: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
@@ -33,34 +28,34 @@ export default {
           width: '95%',
           left: '30px',
           right: '40px',
-          containLabel: false,
+          containLabel: false
         },
         legend: {
           enable: true,
-          left: '0',
+          left: '0'
         },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
             type: 'cross',
             label: {
-              backgroundColor: '#6a7985',
-            },
-          },
+              backgroundColor: '#6a7985'
+            }
+          }
         },
         xAxis: {
           boundaryGap: false,
           scale: true,
           splitNumber: 10,
-          min: 0,
+          min: 0
         },
         yAxis: {
           splitLine: { show: false },
-          scale: true,
+          scale: true
         },
-        series: this.optionData.series,
-      },
+        series: this.optionData.series
+      }
     }
-  },
+  }
 }
 </script>

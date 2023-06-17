@@ -1,6 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "lint": "eslint resources/js/**/*.js resources/js/**/*.vue",
+    "lint:fix": "eslint resources/js/**/*.js resources/js/**/*.vue --fix",
+    "format": "prettier --write \"resources/js/**/*.js\" \"resources/js/**/*.vue\"",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",

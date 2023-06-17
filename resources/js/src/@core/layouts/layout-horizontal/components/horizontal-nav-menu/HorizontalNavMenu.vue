@@ -10,16 +10,16 @@ import HorizontalNavMenuItems from './components/horizontal-nav-menu-items/Horiz
 
 export default {
   components: {
-    HorizontalNavMenuItems,
+    HorizontalNavMenuItems
   },
   setup() {
     return {
-      navMenuItems,
+      navMenuItems
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import "~@resources/scss/base/core/menu/menu-types/horizontal-menu.scss";
+@import '~@resources/scss/base/core/menu/menu-types/horizontal-menu.scss';
 </style>

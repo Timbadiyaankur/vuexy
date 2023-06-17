@@ -8,10 +8,7 @@
 ========================================================================================== -->
 
 <template>
-  <v-tour
-    name="vuexyTour"
-    :steps="steps"
-  >
+  <v-tour name="vuexyTour" :steps="steps">
     <template slot-scope="tour">
       <transition name="fade">
         <!-- eslint-disable vue/no-use-v-if-with-v-for -->
@@ -27,11 +24,7 @@
           :is-last="tour.isLast"
           :labels="tour.labels"
         >
-
-          <div
-            slot="actions"
-            class="tour-actions d-flex justify-content-between"
-          >
+          <div slot="actions" class="tour-actions d-flex justify-content-between">
             <!-- Skip Button -->
             <b-button
               v-if="tour.currentStep != tour.steps.length - 1"
@@ -41,23 +34,12 @@
               @click="tour.stop"
             >
               <span class="mr-25 align-middle">Skip</span>
-              <feather-icon
-                icon="XIcon"
-                size="12"
-              />
+              <feather-icon icon="XIcon" size="12" />
             </b-button>
 
             <!-- Previous Button -->
-            <b-button
-              v-if="tour.currentStep"
-              size="sm"
-              variant="outline-primary mr-1"
-              @click="tour.previousStep"
-            >
-              <feather-icon
-                icon="ChevronLeftIcon"
-                size="12"
-              />
+            <b-button v-if="tour.currentStep" size="sm" variant="outline-primary mr-1" @click="tour.previousStep">
+              <feather-icon icon="ChevronLeftIcon" size="12" />
               <span class="ml-25 align-middle">Previous</span>
             </b-button>
 
@@ -70,10 +52,7 @@
               @click="tour.nextStep"
             >
               <span class="mr-25 align-middle">Next</span>
-              <feather-icon
-                icon="ChevronRightIcon"
-                size="12"
-              />
+              <feather-icon icon="ChevronRightIcon" size="12" />
             </b-button>
 
             <!-- Finish Button -->
@@ -85,13 +64,9 @@
               @click="tour.stop"
             >
               <span class="mr-25 align-middle">Finish</span>
-              <feather-icon
-                icon="CheckCircleIcon"
-                size="12"
-              />
+              <feather-icon icon="CheckCircleIcon" size="12" />
             </b-button>
           </div>
-
         </v-step>
         <!-- eslint-enable vue/no-use-v-if-with-v-for -->
       </transition>
@@ -105,13 +80,13 @@ import { BButton } from 'bootstrap-vue'
 export default {
   name: 'VxTour',
   components: {
-    BButton,
+    BButton
   },
   props: {
     steps: {
       required: true,
-      type: Array,
-    },
-  },
+      type: Array
+    }
+  }
 }
 </script>

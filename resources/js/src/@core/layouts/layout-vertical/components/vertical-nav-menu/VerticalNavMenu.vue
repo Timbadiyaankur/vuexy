@@ -2,8 +2,8 @@
   <div
     class="main-menu menu-fixed menu-accordion menu-shadow"
     :class="[
-      { 'expanded': !isVerticalMenuCollapsed || (isVerticalMenuCollapsed && isMouseHovered) },
-      skin === 'light'|| skin === 'bordered' ? 'menu-light' : 'menu-dark'
+      { expanded: !isVerticalMenuCollapsed || (isVerticalMenuCollapsed && isMouseHovered) },
+      skin === 'light' || skin === 'bordered' ? 'menu-light' : 'menu-dark'
     ]"
     @mouseenter="updateMouseHovered(true)"
     @mouseleave="updateMouseHovered(false)"
@@ -17,18 +17,11 @@
         :collapseTogglerIcon="collapseTogglerIcon"
       >
         <ul class="nav navbar-nav flex-row">
-
           <!-- Logo & Text -->
           <li class="nav-item mr-auto">
-            <b-link
-              class="navbar-brand"
-              to="/"
-            >
+            <b-link class="navbar-brand" to="/">
               <span class="brand-logo">
-                <b-img
-                  :src="appLogoImage"
-                  alt="logo"
-                />
+                <b-img :src="appLogoImage" alt="logo" />
               </span>
               <h2 class="brand-text">
                 {{ appName }}
@@ -39,12 +32,7 @@
           <!-- Toggler Button -->
           <li class="nav-item nav-toggle">
             <b-link class="nav-link modern-nav-toggle">
-              <feather-icon
-                icon="XIcon"
-                size="20"
-                class="d-block d-xl-none"
-                @click="toggleVerticalMenuActive"
-              />
+              <feather-icon icon="XIcon" size="20" class="d-block d-xl-none" @click="toggleVerticalMenuActive" />
               <feather-icon
                 :icon="collapseTogglerIconFeather"
                 size="20"
@@ -59,22 +47,20 @@
     <!-- / main menu header-->
 
     <!-- Shadow -->
-    <div
-      :class="{'d-block': shallShadowBottom}"
-      class="shadow-bottom"
-    />
+    <div :class="{ 'd-block': shallShadowBottom }" class="shadow-bottom" />
 
     <!-- main menu content-->
     <vue-perfect-scrollbar
       :settings="perfectScrollbarSettings"
       class="main-menu-content scroll-area"
       tagname="ul"
-      @ps-scroll-y="evt => { shallShadowBottom = evt.srcElement.scrollTop > 0 }"
+      @ps-scroll-y="
+        evt => {
+          shallShadowBottom = evt.srcElement.scrollTop > 0
+        }
+      "
     >
-      <vertical-nav-menu-items
-        :items="navMenuItems"
-        class="navigation navigation-main"
-      />
+      <vertical-nav-menu-items :items="navMenuItems" class="navigation navigation-main" />
     </vue-perfect-scrollbar>
     <!-- /main menu content-->
   </div>
@@ -95,26 +81,21 @@ export default {
     VuePerfectScrollbar,
     VerticalNavMenuItems,
     BLink,
-    BImg,
+    BImg
   },
   props: {
     isVerticalMenuActive: {
       type: Boolean,
-      required: true,
+      required: true
     },
     toggleVerticalMenuActive: {
       type: Function,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
-    const {
-      isMouseHovered,
-      isVerticalMenuCollapsed,
-      collapseTogglerIcon,
-      toggleCollapsed,
-      updateMouseHovered,
-    } = useVerticalNavMenu(props)
+    const { isMouseHovered, isVerticalMenuCollapsed, collapseTogglerIcon, toggleCollapsed, updateMouseHovered } =
+      useVerticalNavMenu(props)
 
     const { skin } = useAppConfig()
 
@@ -125,10 +106,12 @@ export default {
 
     const perfectScrollbarSettings = {
       maxScrollbarLength: 60,
-      wheelPropagation: false,
+      wheelPropagation: false
     }
 
-    const collapseTogglerIconFeather = computed(() => (collapseTogglerIcon.value === 'unpinned' ? 'CircleIcon' : 'DiscIcon'))
+    const collapseTogglerIconFeather = computed(() =>
+      collapseTogglerIcon.value === 'unpinned' ? 'CircleIcon' : 'DiscIcon'
+    )
 
     // App Name
     const { appName, appLogoImage } = $themeConfig.app
@@ -151,12 +134,12 @@ export default {
 
       // App Name
       appName,
-      appLogoImage,
+      appLogoImage
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import "~@resources/scss/base/core/menu/menu-types/vertical-menu.scss";
+@import '~@resources/scss/base/core/menu/menu-types/vertical-menu.scss';
 </style>

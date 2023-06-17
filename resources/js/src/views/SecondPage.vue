@@ -14,10 +14,9 @@ import { BCard, BCardText } from 'bootstrap-vue'
 export default {
   components: {
     BCard,
-    BCardText,
-  },
+    BCardText
+  }
 }
 </script>
 
-<style>
-</style>
+<style></style>

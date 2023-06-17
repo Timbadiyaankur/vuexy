@@ -1,11 +1,5 @@
 <template>
-  <e-charts
-    ref="line"
-    autoresize
-    :options="line"
-    theme="theme-color"
-    auto-resize
-  />
+  <e-charts ref="line" autoresize :options="line" theme="theme-color" auto-resize />
 </template>
 
 <script>
@@ -19,49 +13,53 @@ ECharts.registerTheme('theme-color', theme)
 
 export default {
   components: {
-    ECharts,
+    ECharts
   },
   props: {
     optionData: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
       line: {
         // Make gradient line here
-        visualMap: [{
-          show: true,
-          type: 'continuous',
-          min: 0,
-          max: 400,
-        }],
+        visualMap: [
+          {
+            show: true,
+            type: 'continuous',
+            min: 0,
+            max: 400
+          }
+        ],
         grid: {
           width: '96%',
           left: '30px',
           top: '10px',
-          show: false,
+          show: false
         },
         tooltip: {
-          trigger: 'axis',
+          trigger: 'axis'
         },
-        xAxis: [{
-          boundaryGap: false,
-          data: this.optionData.xAxisData,
-        }],
+        xAxis: [
+          {
+            boundaryGap: false,
+            data: this.optionData.xAxisData
+          }
+        ],
         yAxis: {
           type: 'value',
-          splitLine: { show: false },
+          splitLine: { show: false }
         },
         series: {
           type: 'line',
           showSymbol: false,
-          data: this.optionData.series,
-        },
-      },
+          data: this.optionData.series
+        }
+      }
     }
-  },
+  }
 }
 </script>
 

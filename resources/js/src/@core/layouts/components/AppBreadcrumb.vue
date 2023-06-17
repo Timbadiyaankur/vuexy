@@ -65,7 +65,7 @@ import Ripple from 'vue-ripple-directive'
 
 export default {
   directives: {
-    Ripple,
+    Ripple
   },
   components: {
     BBreadcrumb,
@@ -74,7 +74,7 @@ export default {
     BCol,
     BDropdown,
     BDropdownItem,
-    BButton,
-  },
+    BButton
+  }
 }
 </script>

@@ -76,13 +76,13 @@ export default {
     BAvatar,
 
     // Navbar Components
-    DarkToggler,
+    DarkToggler
   },
   props: {
     toggleVerticalMenuActive: {
       type: Function,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

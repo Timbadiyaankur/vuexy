@@ -93,7 +93,7 @@
             :class="[
               `bg-${color}`,
               { 'border border-light': !index },
-              { 'mark-active': navbarBackgroundColor === color },
+              { 'mark-active': navbarBackgroundColor === color }
             ]"
             @click="navbarBackgroundColor = color"
           />
@@ -132,7 +132,7 @@ export default {
 
     // 3rd party
     vSelect,
-    VuePerfectScrollbar,
+    VuePerfectScrollbar
   },
   setup() {
     const {
@@ -172,7 +172,7 @@ export default {
 
       // Footer
       footerTypes,
-      footerType,
+      footerType
     } = useAppCustomizer()
 
     if (layoutType.value === 'horizontal') {
@@ -188,7 +188,7 @@ export default {
     // Perfect Scrollbar
     const perfectScrollbarSettings = {
       maxScrollbarLength: 60,
-      wheelPropagation: false,
+      wheelPropagation: false
     }
 
     return {
@@ -231,9 +231,9 @@ export default {
       footerType,
 
       // Perfect Scrollbar
-      perfectScrollbarSettings,
+      perfectScrollbarSettings
     }
-  },
+  }
 }
 </script>
 

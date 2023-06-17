@@ -30,10 +30,9 @@ export default {
   components: {
     BCard,
     BCardText,
-    BLink,
-  },
+    BLink
+  }
 }
 </script>
 
-<style>
-</style>
+<style></style>

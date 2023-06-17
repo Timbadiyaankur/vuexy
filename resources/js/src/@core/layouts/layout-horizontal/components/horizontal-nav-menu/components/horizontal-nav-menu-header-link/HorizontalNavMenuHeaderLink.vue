@@ -2,16 +2,10 @@
   <li
     v-if="canViewHorizontalNavMenuHeaderLink(item)"
     class="nav-item"
-    :class="{'sidebar-group-active active': isActive}"
+    :class="{ 'sidebar-group-active active': isActive }"
   >
-    <b-link
-      class="nav-link"
-      :to="{ name: item.route }"
-    >
-      <feather-icon
-        size="14"
-        :icon="item.icon"
-      />
+    <b-link class="nav-link" :to="{ name: item.route }">
+      <feather-icon size="14" :icon="item.icon" />
       <span>{{ t(item.title) }}</span>
     </b-link>
   </li>
@@ -26,14 +20,14 @@ import mixinHorizontalNavMenuHeaderLink from './mixinHorizontalNavMenuHeaderLink
 
 export default {
   components: {
-    BLink,
+    BLink
   },
   mixins: [mixinHorizontalNavMenuHeaderLink],
   props: {
     item: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
     const { isActive, updateIsActive } = useHorizontalNavMenuHeaderLink(props.item)
@@ -49,8 +43,8 @@ export default {
       canViewHorizontalNavMenuHeaderLink,
 
       // i18n
-      t,
+      t
     }
-  },
+  }
 }
 </script>

@@ -1,9 +1,6 @@
 <template>
   <b-nav-item @click="skin = isDark ? 'light' : 'dark'">
-    <feather-icon
-      size="21"
-      :icon="`${isDark ? 'Sun' : 'Moon'}Icon`"
-    />
+    <feather-icon size="21" :icon="`${isDark ? 'Sun' : 'Moon'}Icon`" />
   </b-nav-item>
 </template>
 
@@ -14,7 +11,7 @@ import { BNavItem } from 'bootstrap-vue'
 
 export default {
   components: {
-    BNavItem,
+    BNavItem
   },
   setup() {
     const { skin } = useAppConfig()
@@ -22,6 +19,6 @@ export default {
     const isDark = computed(() => skin.value === 'dark')
 
     return { skin, isDark }
-  },
+  }
 }
 </script>

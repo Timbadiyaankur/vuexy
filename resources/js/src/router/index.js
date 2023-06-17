@@ -19,10 +19,10 @@ const router = new VueRouter({
         breadcrumb: [
           {
             text: 'Home',
-            active: true,
-          },
-        ],
-      },
+            active: true
+          }
+        ]
+      }
     },
     {
       path: '/second-page',
@@ -33,32 +33,32 @@ const router = new VueRouter({
         breadcrumb: [
           {
             text: 'Second Page',
-            active: true,
-          },
-        ],
-      },
+            active: true
+          }
+        ]
+      }
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('@/views/Login.vue'),
       meta: {
-        layout: 'full',
-      },
+        layout: 'full'
+      }
     },
     {
       path: '/error-404',
       name: 'error-404',
       component: () => import('@/views/error/Error404.vue'),
       meta: {
-        layout: 'full',
-      },
+        layout: 'full'
+      }
     },
     {
       path: '*',
-      redirect: 'error-404',
-    },
-  ],
+      redirect: 'error-404'
+    }
+  ]
 })
 
 // ? For splash screen

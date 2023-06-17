@@ -2,18 +2,12 @@
   <li
     v-if="canViewHorizontalNavMenuLink(item)"
     :class="{
-      'active': isActive,
-      'disabled': item.disabled
+      active: isActive,
+      disabled: item.disabled
     }"
   >
-    <b-link
-      v-bind="linkProps"
-      class="dropdown-item"
-    >
-      <feather-icon
-        :icon="item.icon || 'CircleIcon'"
-        size="24"
-      />
+    <b-link v-bind="linkProps" class="dropdown-item">
+      <feather-icon :icon="item.icon || 'CircleIcon'" size="24" />
       <span class="menu-title">{{ t(item.title) }}</span>
     </b-link>
   </li>
@@ -28,14 +22,14 @@ import mixinHorizontalNavMenuLink from './mixinHorizontalNavMenuLink'
 
 export default {
   components: {
-    BLink,
+    BLink
   },
   mixins: [mixinHorizontalNavMenuLink],
   props: {
     item: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
     const { isActive, linkProps, updateIsActive } = useHorizontalNavMenuLink(props.item)
@@ -52,9 +46,8 @@ export default {
       canViewHorizontalNavMenuLink,
 
       // i18n
-      t,
+      t
     }
-  },
-
+  }
 }
 </script>

@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="vertical-layout h-100"
-    :class="[layoutClasses]"
-    :data-col="isNavMenuHidden ? '1-column' : null"
-  >
+  <div class="vertical-layout h-100" :class="[layoutClasses]" :data-col="isNavMenuHidden ? '1-column' : null">
     <!-- Navbar -->
     <b-navbar
       :toggleable="false"
@@ -29,51 +25,34 @@
       :toggle-vertical-menu-active="toggleVerticalMenuActive"
     >
       <template #header="slotProps">
-        <slot
-          name="vertical-menu-header"
-          v-bind="slotProps"
-        />
+        <slot name="vertical-menu-header" v-bind="slotProps" />
       </template>
     </vertical-nav-menu>
     <!-- /Vertical Nav Menu -->
 
     <!-- Vertical Nav Menu Overlay -->
-    <div
-      class="sidenav-overlay"
-      :class="overlayClasses"
-      @click="isVerticalMenuActive = false"
-    />
+    <div class="sidenav-overlay" :class="overlayClasses" @click="isVerticalMenuActive = false" />
     <!-- /Vertical Nav Menu Overlay -->
 
     <!-- Content -->
 
     <!-- CONTENT TYPE: Left -->
-    <transition
-      :name="routerTransition"
-      mode="out-in"
-    >
+    <transition :name="routerTransition" mode="out-in">
       <component
         :is="layoutContentRenderer"
-        :key="layoutContentRenderer === 'layout-content-renderer-left' ? $route.meta.navActiveLink || $route.name : null"
+        :key="
+          layoutContentRenderer === 'layout-content-renderer-left' ? $route.meta.navActiveLink || $route.name : null
+        "
       >
-        <template
-          v-for="(index, name) in $scopedSlots"
-          v-slot:[name]="data"
-        >
-          <slot
-            :name="name"
-            v-bind="data"
-          />
+        <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
+          <slot :name="name" v-bind="data" />
         </template>
       </component>
     </transition>
     <!--/ Content -->
 
     <!-- Footer -->
-    <footer
-      class="footer footer-light"
-      :class="[footerTypeClass]"
-    >
+    <footer class="footer footer-light" :class="[footerTypeClass]">
       <slot name="footer">
         <app-footer />
       </slot>
@@ -106,7 +85,7 @@ export default {
     BNavbar,
     LayoutContentRendererLeftDetached,
     LayoutContentRendererLeft,
-    LayoutContentRendererDefault,
+    LayoutContentRendererDefault
   },
   mixins: [mixinVerticalLayout],
   computed: {
@@ -115,12 +94,10 @@ export default {
       if (rendererType === 'sidebar-left') return 'layout-content-renderer-left'
       if (rendererType === 'sidebar-left-detached') return 'layout-content-renderer-left-detached'
       return 'layout-content-renderer-default'
-    },
+    }
   },
   setup() {
-    const {
-      routerTransition, navbarBackgroundColor, navbarType, footerType, isNavMenuHidden,
-    } = useAppConfig()
+    const { routerTransition, navbarBackgroundColor, navbarType, footerType, isNavMenuHidden } = useAppConfig()
 
     const {
       isVerticalMenuActive,
@@ -130,7 +107,7 @@ export default {
       overlayClasses,
       resizeHandler,
       navbarTypeClass,
-      footerTypeClass,
+      footerTypeClass
     } = useVerticalLayout(navbarType, footerType)
 
     // Resize handler
@@ -152,12 +129,12 @@ export default {
       // App Config
       routerTransition,
       navbarBackgroundColor,
-      isNavMenuHidden,
+      isNavMenuHidden
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import "~@resources/scss/base/themes/bordered-layout.scss";
+@import '~@resources/scss/base/themes/bordered-layout.scss';
 </style>

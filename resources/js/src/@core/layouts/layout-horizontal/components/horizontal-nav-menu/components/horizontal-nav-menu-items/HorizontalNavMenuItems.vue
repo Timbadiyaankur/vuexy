@@ -1,14 +1,6 @@
 <template>
-  <ul
-    id="main-menu-navigation"
-    class="nav navbar-nav"
-  >
-    <component
-      :is="resolveNavComponent(item)"
-      v-for="item in items"
-      :key="item.header || item.title"
-      :item="item"
-    />
+  <ul id="main-menu-navigation" class="nav navbar-nav">
+    <component :is="resolveNavComponent(item)" v-for="item in items" :key="item.header || item.title" :item="item" />
   </ul>
 </template>
 
@@ -19,13 +11,13 @@ import HorizontalNavMenuHeaderGroup from '../horizontal-nav-menu-header-group/Ho
 export default {
   components: {
     HorizontalNavMenuHeaderLink,
-    HorizontalNavMenuHeaderGroup,
+    HorizontalNavMenuHeaderGroup
   },
   props: {
     items: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
   setup() {
     const resolveNavComponent = item => {
@@ -34,8 +26,8 @@ export default {
     }
 
     return {
-      resolveNavComponent,
+      resolveNavComponent
     }
-  },
+  }
 }
 </script>
